@@ -40,6 +40,11 @@ public class StudentController {
     public Flux<Student> listStudents(@RequestParam(name = "name", required = false) String name) {
         return studentService.findStudentsByName(name);
     }
+    
+    @GetMapping("/all")
+    public Flux<Student> getAllStudents() {
+        return studentService.findAll();
+    }
 
     @PostMapping
     public Mono<Student> addNewStudent(@RequestBody Student student) {

@@ -46,8 +46,7 @@ public class StudentService {
         return studentRepository.delete(student);
     }
     
-    public Flux<Student> findAll() {
-     //   DatabaseClient client = DatabaseClient. create(connectionFactory);
+    public Flux<Student> findAll() {  
         return client.sql("select * from student")
                 .map(row -> new Student(row.get("id", Long.class),
                         row.get("name", String.class),
